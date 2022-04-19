@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Clothing Store</string>
+    <string name="name">Enter Email</string>
+    <string name="password">Enter Password</string>
+    <string name="signIn">Sign In</string>
+    <string name="signUp">Register?</string>
+    <string name="submit">Submit</string>
+    <string name="view">View</string>
+    <string name="add">Add</string>
+    <string name="logout">Logout</string>
+    <string name="search">Search</string>
+    <string name="remove">Remove</string>
+    <string name="welcome">  Please Sign In or Sign Up</string>
+    <string name="title_activity_maps">Maps</string>
+    <string name="api_key">AIzaSyDb5Tw-8crbP2KJR4uhqhDLdjPeHFGVA1c</string>
+</resources>

@@ -16,10 +16,9 @@ public class User {
 
     }
 
-    public User(String name, String id, String address, String cardNumber, String cardExpiry,
+    public User(String name, String address, String cardNumber, String cardExpiry,
             String cvs) {
         this.name = name;
-        this.id = id;
         this.address = address;
         this.cardNumber = cardNumber;
         this.cardExpiry = cardExpiry;

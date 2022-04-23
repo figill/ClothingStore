@@ -19,7 +19,7 @@ public class Register<email, password> extends AppCompatActivity {
 
     EditText addresstext;
     EditText username;
-    EditText userphone;
+    EditText card, date, cvs;
     private Button signUpbutton;
     public static final String TAG = "TAG";
 
@@ -31,8 +31,10 @@ public class Register<email, password> extends AppCompatActivity {
         //user information
         addresstext = findViewById(R.id.address);
         username = findViewById(R.id.name);
-        userphone = findViewById(R.id.phone);
+        card = findViewById(R.id.payment);
         signUpbutton = findViewById(R.id.button);
+        date = findViewById(R.id.payment2);
+        cvs = findViewById(R.id.payment3);
 
 
         Intent i = getIntent();
@@ -44,15 +46,20 @@ public class Register<email, password> extends AppCompatActivity {
             public void onClick(View view) {
                 //save user's information in firebase
                 String name = username.getText().toString();
-                String phone = userphone.getText().toString();
+                String cardNumber = card.getText().toString();
                 String address = addresstext.getText().toString();
+                String expiryDate = date.getText().toString();
+                String cvs1 = cvs.getText().toString();
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 
                 User user1 = new User(); // userIDis key of the node, got from Auth, username and user phone got from edit texts
                 //User user1 = new User(name, phone, ppsn);
                 user1.setName(name);
-                user1.setPhone(phone);
+                user1.setCardNumber(cardNumber);
                 user1.setAddress(address);
+                user1.setCardExpiry(expiryDate);
+                user1.setCvs(cvs1);
                 db.collection("Users").document(userID)
                         .set(user1)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {

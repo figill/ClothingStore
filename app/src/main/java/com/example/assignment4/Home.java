@@ -13,15 +13,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Home extends AppCompatActivity {
 
-    public DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // drawer layout instance to toggle the menu icon to open drawer and back button to close drawer
-        drawerLayout = findViewById(R.id.drawerLayout);
+
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNav);
         Menu menu = bottomNavigationView.getMenu();

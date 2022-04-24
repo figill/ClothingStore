@@ -35,6 +35,7 @@ public class StockItems extends AppCompatActivity {
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
     private Button button;
+    private String selectedFilter = "all";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,13 +61,13 @@ public class StockItems extends AppCompatActivity {
         menuItem.setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
-                case R.id.home:
+                case R.id.navigation_home:
                     Intent intent3= new Intent(StockItems.this, AdminHome.class); // need to create recycler class
                     startActivity(intent3);
                     break;
 
                 case R.id.navigation_cat:
-                    Intent intent = new Intent(StockItems.this, CategoryAdmin.class);
+                    Intent intent = new Intent(StockItems.this, ProfileAdmin.class);
                     startActivity(intent);
                     break;
 
@@ -172,5 +173,54 @@ public class StockItems extends AppCompatActivity {
 
             adapter.filterList(filteredList);
         }
+    }
+
+    private void filterList(String string){
+        selectedFilter = string;
+
+        ArrayList<StockModel> filteredList = new ArrayList<StockModel>();
+
+        for (StockModel t : list) {
+            if (t.getCategory().toLowerCase().contains(string.toLowerCase())) {
+                filteredList.add(t);
+            }
+
+        }
+        if (filteredList.isEmpty()) {
+            Toast.makeText(this, "No Data Found..", Toast.LENGTH_SHORT).show();
+        } else {
+
+            adapter.filterList(filteredList);
+        }
+    }
+
+    public void allFilter(View view) {
+        list = new ArrayList<>();
+
+        recyclerView = findViewById(R.id.my_recycler_view);
+        // To display the Recycler view linearly
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setHasFixedSize(true);
+
+        adapter = new StockAdapter(list);
+        recyclerView.setAdapter(adapter);
+        EventChangeListener();
+    }
+
+    public void clothesFilter(View view) {
+        filterList("Clothing");
+    }
+
+    public void shoesFilter(View view) {
+        filterList("Shoes");
+    }
+
+    public void bagsFilter(View view) {
+        filterList("Bags");
+    }
+
+    public void jewelleryFilter(View view) {
+        filterList("Jewellery");
     }
 }

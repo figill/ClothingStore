@@ -27,7 +27,7 @@ public class Home extends AppCompatActivity {
         menuItem.setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
-                case R.id.home:
+                case R.id.navigation_home:
                     break;
 
                 case R.id.navigation_cat:

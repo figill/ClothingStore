@@ -17,10 +17,72 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:text="ALL"
+                android:id="@+id/all"
+                android:textSize="8dp"
+                android:onClick="allFilter">
+            </Button>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:text="CLOTHING"
+                android:id="@+id/clothes"
+                android:textSize="8dp"
+                android:onClick="clothesFilter">
+            </Button>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:text="SHOES"
+                android:id="@+id/shoes"
+                android:textSize="8dp"
+                android:onClick="shoesFilter">
+            </Button>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:text="BAGS"
+                android:id="@+id/bags"
+                android:textSize="8dp"
+                android:onClick="bagsFilter">
+            </Button>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:text="JEWELLERY"
+                android:textSize="8dp"
+                android:id="@+id/jewellery"
+                android:onClick="jewelleryFilter">
+            </Button>
+
+        </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/my_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="432dp"
+            android:layout_height="400dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -29,12 +91,13 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="205dp"
+            android:layout_width="334dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="5dp"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
-            app:cardBackgroundColor="@color/white"
             app:cardMaxElevation="10dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true">
@@ -42,8 +105,8 @@
 
             <Button
                 android:id="@+id/addStock"
-                android:layout_width="277dp"
-                android:layout_height="79dp"
+                android:layout_width="274dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@color/transparent"
                 android:drawableEnd="@drawable/ic_baseline_add_circle_24"

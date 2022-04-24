@@ -22,13 +22,13 @@ public class CustomerDetails extends AppCompatActivity {
         menuItem.setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
-                case R.id.home:
+                case R.id.navigation_home:
                     Intent intent3= new Intent(CustomerDetails.this, AdminHome.class); // need to create recycler class
                     startActivity(intent3);
                     break;
 
                 case R.id.navigation_cat:
-                    Intent intent = new Intent(CustomerDetails.this, CategoryAdmin.class);
+                    Intent intent = new Intent(CustomerDetails.this, ProfileAdmin.class);
                     startActivity(intent);
                     break;
 

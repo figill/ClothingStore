@@ -24,7 +24,7 @@ public class ShoppingCart extends AppCompatActivity {
         menuItem.setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
-                case R.id.home:
+                case R.id.navigation_home:
                     Intent intent = new Intent(ShoppingCart.this, Home.class);
                     startActivity(intent);
                     break;

@@ -22,7 +22,7 @@ public class MainActivity<email, password> extends AppCompatActivity {
 
     private EditText useremailedittext;
     private EditText passwordedittext;
-    private Button signUpbutton, signInbutton;
+    private Button signUpbutton, signInbutton, adminButton;
     private FirebaseAuth mAuth;
 
     @Override
@@ -33,6 +33,7 @@ public class MainActivity<email, password> extends AppCompatActivity {
         passwordedittext = findViewById(R.id.password);
         signUpbutton = findViewById(R.id.button2);
         signInbutton = findViewById(R.id.button);
+        adminButton = findViewById(R.id.button3);
         mAuth = FirebaseAuth.getInstance();
 
         //handle click on sign up button
@@ -86,6 +87,16 @@ public class MainActivity<email, password> extends AppCompatActivity {
                         }
                     }
                 });
+            }
+        });
+
+        adminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(MainActivity.this, AdminLogin.class);
+                startActivity(i);
+
             }
         });
     }

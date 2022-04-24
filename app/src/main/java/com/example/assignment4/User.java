@@ -5,7 +5,6 @@ import java.util.Date;
 public class User {
 
     String name;
-    String id;
     String address;
     String cardNumber;
     String cardExpiry;
@@ -23,14 +22,6 @@ public class User {
         this.cardNumber = cardNumber;
         this.cardExpiry = cardExpiry;
         this.cvs = cvs;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {

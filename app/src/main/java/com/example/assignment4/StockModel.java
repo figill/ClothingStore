@@ -3,18 +3,18 @@ package com.example.assignment4;
 import android.net.Uri;
 
 public class StockModel {
-    String id;
     String title;
     String manufacturer;
     String category;
-    Double price;
+    String quantity;
+    String price;
     Uri image;
 
-    public StockModel(String id, String title, String manufacturer, String category, Double price, Uri image) {
-        this.id = id;
+    public StockModel(String title, String manufacturer, String category, String quantity, String price, Uri image) {
         this.title = title;
         this.manufacturer = manufacturer;
         this.category = category;
+        this.quantity = quantity;
         this.price = price;
         this.image = image;
     }
@@ -23,12 +23,12 @@ public class StockModel {
 
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public StockModel(String title, String manufacturer, String category, String quantity, String price) {
+        this.title = title;
+        this.manufacturer = manufacturer;
+        this.category = category;
+        this.quantity = quantity;
+        this.price = price;
     }
 
     public String getTitle() {
@@ -55,11 +55,19 @@ public class StockModel {
         this.category = category;
     }
 
-    public Double getPrice() {
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

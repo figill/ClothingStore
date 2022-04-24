@@ -11,8 +11,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView1"
-        android:layout_width="156dp"
-        android:layout_height="130dp"
+        android:layout_width="125dp"
+        android:layout_height="107dp"
         android:scaleType="centerCrop"
         android:src="@drawable/user" />
 
@@ -20,7 +20,7 @@
     <TextView
         android:id="@+id/textView4"
         android:layout_width="385dp"
-        android:layout_height="36dp" />
+        android:layout_height="56dp" />
 
     <EditText
         android:id="@+id/name"

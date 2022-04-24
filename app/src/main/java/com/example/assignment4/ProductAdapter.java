@@ -48,7 +48,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new viewLayout
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.stock_layout, parent, false); //false: inflate the row
+        View itemView = inflater.inflate(R.layout.products_layout, parent, false); //false: inflate the row
         // layout to parent and return view, if true return parent+view
         MyViewHolder viewHolder = new MyViewHolder(itemView);
         return viewHolder;

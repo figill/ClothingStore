@@ -48,22 +48,6 @@ public class Category extends AppCompatActivity {
         });
     }
 
-    public void clothes(View view){
-
-    }
-
-    public void shoes(View view){
-
-    }
-
-    public void bags(View view){
-
-    }
-
-    public void jewellery(View view){
-
-    }
-
     public void products(View view){
         Intent i = new Intent(Category.this, Products.class);
         startActivity(i);

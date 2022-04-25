@@ -1,17 +1,21 @@
 package com.example.assignment4;
 
+import java.util.Date;
+
 public class OrderReceipt {
 
     String userID;
     String userEmail;
-    String itemsBought;
     String totalPrice;
+    String paymentType;
+    String date;
 
-    public OrderReceipt(String userID, String userEmail, String itemsBought, String totalPrice) {
+    public OrderReceipt(String userID, String userEmail, String paymentType, String totalPrice, String date) {
         this.userID = userID;
         this.userEmail = userEmail;
-        this.itemsBought = itemsBought;
+        this.paymentType = paymentType;
         this.totalPrice = totalPrice;
+        this.date = date;
     }
 
     public OrderReceipt() {
@@ -33,12 +37,12 @@ public class OrderReceipt {
         this.userEmail = userEmail;
     }
 
-    public String getItemsBought() {
-        return itemsBought;
+    public String getPaymentType() {
+        return paymentType;
     }
 
-    public void setItemsBought(String itemsBought) {
-        this.itemsBought = itemsBought;
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
     }
 
     public String getTotalPrice() {
@@ -47,5 +51,13 @@ public class OrderReceipt {
 
     public void setTotalPrice(String totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

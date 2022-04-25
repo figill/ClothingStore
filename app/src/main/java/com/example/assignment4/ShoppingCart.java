@@ -6,15 +6,19 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +31,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Date;
+
 public class ShoppingCart extends AppCompatActivity {
 
     int minteger = 1;
@@ -37,6 +43,12 @@ public class ShoppingCart extends AppCompatActivity {
     private FirebaseAuth mAuth;
     public TextView t1;
     public String totalPrice;
+    public Button b1, b2;
+    PaypalStrategy paypal;
+    CardStrategy card;
+    public static final String TAG = "TAG";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +95,75 @@ public class ShoppingCart extends AppCompatActivity {
             }
             return false;
         });
+
         EventChangeListener();
+
+        b1 = findViewById(R.id.card);
+        b2 = findViewById(R.id.paypal);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db = FirebaseFirestore.getInstance();
+                mAuth = FirebaseAuth.getInstance();
+                FirebaseUser user = mAuth.getCurrentUser();
+                String email = user.getEmail();
+                String userID = user.getUid();
+                String paymentType = card.pay();
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                OrderReceipt orderReceipt = new OrderReceipt(userID, email, totalPrice, paymentType, new Date().toString());
+
+                db.collection("OrderReceipt").document()
+                        .set(orderReceipt)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(ShoppingCart.this, "Write is successful", Toast.LENGTH_LONG).show();
+                                Intent i = new Intent(ShoppingCart.this, Home.class);
+                                startActivity(i);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error adding document", e);
+                            }
+                        });
+
+            }
+        });
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db = FirebaseFirestore.getInstance();
+                mAuth = FirebaseAuth.getInstance();
+                FirebaseUser user = mAuth.getCurrentUser();
+                String email = user.getEmail();
+                String userID = user.getUid();
+                String paymentType = paypal.pay();
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                OrderReceipt orderReceipt = new OrderReceipt(userID, email, totalPrice, paymentType, new Date().toString());
+
+                db.collection("OrderReceipt").document()
+                        .set(orderReceipt)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(ShoppingCart.this, "Write is successful", Toast.LENGTH_LONG).show();
+                                Intent i = new Intent(ShoppingCart.this, Home.class);
+                                startActivity(i);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error adding document", e);
+                            }
+                        });
+
+            }
+        });
 
     }
 

@@ -21,7 +21,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/my_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="466dp"
+            android:layout_height="429dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -60,19 +60,39 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="top"
-                android:layout_weight="1"
-                android:background="@color/transparent"
-                android:drawableEnd="@drawable/ic_baseline_add_card_24"
-                android:onClick="pay"
-                android:text="Pay Now"
-                android:textSize="17dp"
-                android:textStyle="bold" />
         </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/card"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:drawableEnd="@drawable/ic_baseline_add_card_24"
+            android:onClick="pay"
+            android:text="Card"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/paypal"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:drawableEnd="@drawable/paypal"
+            android:onClick="pay"
+            android:text="Paypal"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 
     </LinearLayout>

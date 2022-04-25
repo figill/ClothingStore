@@ -134,7 +134,7 @@ public class AddStock extends AppCompatActivity {
         final String randomKey = UUID.randomUUID().toString();
 
 
-        StorageReference storageReference1 = storageReference.child("StockImages/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
+        StorageReference storageReference1 = storageReference.child("StockImages/" + getFileExtension(imageUri));
         storageReference1.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

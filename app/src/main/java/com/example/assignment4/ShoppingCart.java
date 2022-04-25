@@ -142,7 +142,7 @@ public class ShoppingCart extends AppCompatActivity {
                 String userID = user.getUid();
                 String paymentType = cart.pay(new PaypalStrategy());
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-                OrderReceipt orderReceipt = new OrderReceipt(userID, email, totalPrice, paymentType, new Date().toString());
+                OrderReceipt orderReceipt = new OrderReceipt(userID, email, paymentType, "2000.49", new Date().toString());
 
                 db.collection("OrderReceipt").document()
                         .set(orderReceipt)

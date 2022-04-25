@@ -1,27 +1,21 @@
 package com.example.assignment4;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 
-public class Home extends AppCompatActivity {
-
-    private FirebaseAuth mAuth;
+public class ConfirmedPurchase extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-
-
+        setContentView(R.layout.activity_confirmed_purchase);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNav);
         Menu menu = bottomNavigationView.getMenu();
@@ -30,20 +24,22 @@ public class Home extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.navigation_home:
+                    Intent intent4 = new Intent(ConfirmedPurchase.this, Home.class);
+                    startActivity(intent4);
                     break;
 
                 case R.id.navigation_cat:
-                    Intent intent = new Intent(Home.this, Category.class);
+                    Intent intent = new Intent(ConfirmedPurchase.this, Category.class);
                     startActivity(intent);
                     break;
 
                 case R.id.navigation_profile:
-                    Intent intent2 = new Intent(Home.this, Profile.class); // need to create recycler class
+                    Intent intent2 = new Intent(ConfirmedPurchase.this, Profile.class); // need to create recycler class
                     startActivity(intent2);
                     break;
 
                 case R.id.navigation_bag:
-                    Intent intent3= new Intent(Home.this, ShoppingCart.class); // need to create recycler class
+                    Intent intent3= new Intent(ConfirmedPurchase.this, ShoppingCart.class); // need to create recycler class
                     startActivity(intent3);
                     break;
 
@@ -52,17 +48,8 @@ public class Home extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.logout_menu, menu);
-        return true;
-    }
-
-    public void logOut(MenuItem menuItem){
-        FirebaseAuth.getInstance().signOut();
-        Intent i = new Intent(Home.this, MainActivity.class);
+    public void contShopping(View view) {
+        Intent i = new Intent(ConfirmedPurchase.this, Category.class);
         startActivity(i);
-        finish();
-
     }
 }

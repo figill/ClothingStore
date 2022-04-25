@@ -3,10 +3,13 @@ package com.example.assignment4;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView txtView, txtView2, txtView3, txtView4, txtView5;
+        public ImageView imageView;
 
         public MyViewHolder(View itemView) {
             super(itemView); //itemView corresponds to all views defined in row layout txt
@@ -34,6 +38,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             txtView3 = (TextView) itemView.findViewById(R.id.category);
             txtView4 = (TextView) itemView.findViewById(R.id.price);
             txtView5 = (TextView) itemView.findViewById(R.id.quantity);
+            imageView = (ImageView) itemView.findViewById(R.id.imageView7);
             itemView.setOnClickListener(this);
         }
 
@@ -63,6 +68,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         viewHolder.txtView3.setText(list.get(position).getCategory());
         viewHolder.txtView4.setText(list.get(position).getPrice());
         viewHolder.txtView5.setText(list.get(position).getQuantity());
+        Picasso.get().load(list.get(position).getImage()).into(viewHolder.imageView);
 
 
     }

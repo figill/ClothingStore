@@ -17,4 +17,6 @@
     <color name="b">#6c95ba</color>
     <color name="navy">#031526</color>
     <color name="yellow">#ffcb2d</color>
+    <color name="grey2">#BDBDBC</color>
+    <color name="orange">#EF9005</color>
 </resources>

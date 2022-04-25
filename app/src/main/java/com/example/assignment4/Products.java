@@ -217,4 +217,8 @@ public class Products extends AppCompatActivity {
     public void jewelleryFilter(View view) {
         filterList("Jewellery");
     }
+
+    public void addToBasket(View view) {
+        Toast.makeText(this, "Item has been added to your basket.", Toast.LENGTH_LONG).show();
+    }
 }

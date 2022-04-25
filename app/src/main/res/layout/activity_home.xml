@@ -7,6 +7,134 @@
     tools:context=".Home">
 
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="423dp"
+        android:layout_height="349dp"
+        android:layout_marginBottom="461dp"
+        android:background="@color/b"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:layout_width="331dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:fontFamily="serif"
+            android:textAlignment="center"
+            android:textSize="40dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="329dp"
+            android:layout_height="235dp"
+            android:layout_gravity="center"
+            android:fontFamily="serif"
+            android:text="Welcome to the user's home page. Enjoy your shopping!"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="40dp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="411dp"
+        android:layout_height="202dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="91dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="250dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="135dp"
+                android:layout_height="135dp"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="@color/grey2"
+                app:cardCornerRadius="250dp">
+
+                <TextView
+                    android:layout_width="105dp"
+                    android:layout_height="62dp"
+                    android:layout_gravity="center"
+                    android:text="Browse By Categories"
+                    android:textColor="@color/white"
+                    android:textSize="21dp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="250dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="135dp"
+                android:layout_height="135dp"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="@color/grey2"
+                app:cardCornerRadius="250dp">
+
+                <TextView
+                    android:layout_width="105dp"
+                    android:layout_height="83dp"
+                    android:layout_gravity="center"
+                    android:text="Search By Product Title"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="21dp"
+                    android:textStyle="bold" />
+
+
+            </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="250dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="135dp"
+                android:layout_height="135dp"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="@color/grey2"
+                app:cardCornerRadius="250dp">
+
+                <TextView
+                    android:layout_width="105dp"
+                    android:layout_height="83dp"
+                    android:layout_gravity="center"
+                    android:text="Pay By Card Or PayPal"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="21dp"
+                    android:textStyle="bold" />
+
+
+            </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"

@@ -44,8 +44,7 @@ public class ShoppingCart extends AppCompatActivity {
     public TextView t1;
     public String totalPrice;
     public Button b1, b2;
-    PaypalStrategy paypal;
-    CardStrategy card;
+    Cart cart = new Cart();
     public static final String TAG = "TAG";
 
 
@@ -54,7 +53,7 @@ public class ShoppingCart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
-        totalPrice = getIntent().getStringExtra("Total Price");
+        //totalPrice = getIntent().getStringExtra("Total Price");
         t1 = findViewById(R.id.textView3);
         t1.setText("2000.49");
 
@@ -109,9 +108,9 @@ public class ShoppingCart extends AppCompatActivity {
                 FirebaseUser user = mAuth.getCurrentUser();
                 String email = user.getEmail();
                 String userID = user.getUid();
-                String paymentType = card.pay();
+                String paymentType = cart.pay(new CardStrategy());
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-                OrderReceipt orderReceipt = new OrderReceipt(userID, email, totalPrice, paymentType, new Date().toString());
+                OrderReceipt orderReceipt = new OrderReceipt(userID, email, paymentType, "2000.49", new Date().toString());
 
                 db.collection("OrderReceipt").document()
                         .set(orderReceipt)
@@ -119,7 +118,7 @@ public class ShoppingCart extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(ShoppingCart.this, "Write is successful", Toast.LENGTH_LONG).show();
-                                Intent i = new Intent(ShoppingCart.this, Home.class);
+                                Intent i = new Intent(ShoppingCart.this, ConfirmedPurchase.class);
                                 startActivity(i);
                             }
                         })
@@ -141,7 +140,7 @@ public class ShoppingCart extends AppCompatActivity {
                 FirebaseUser user = mAuth.getCurrentUser();
                 String email = user.getEmail();
                 String userID = user.getUid();
-                String paymentType = paypal.pay();
+                String paymentType = cart.pay(new PaypalStrategy());
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 OrderReceipt orderReceipt = new OrderReceipt(userID, email, totalPrice, paymentType, new Date().toString());
 
@@ -151,7 +150,7 @@ public class ShoppingCart extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(ShoppingCart.this, "Write is successful", Toast.LENGTH_LONG).show();
-                                Intent i = new Intent(ShoppingCart.this, Home.class);
+                                Intent i = new Intent(ShoppingCart.this, ConfirmedPurchase.class);
                                 startActivity(i);
                             }
                         })
@@ -161,6 +160,7 @@ public class ShoppingCart extends AppCompatActivity {
                                 Log.w(TAG, "Error adding document", e);
                             }
                         });
+
 
             }
         });

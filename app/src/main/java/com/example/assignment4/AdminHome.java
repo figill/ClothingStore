@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminHome extends AppCompatActivity {
 
@@ -43,5 +44,19 @@ public class AdminHome extends AppCompatActivity {
             }
             return false;
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.logout_menu, menu);
+        return true;
+    }
+
+    public void logOut(MenuItem menuItem){
+        FirebaseAuth.getInstance().signOut();
+        Intent i = new Intent(AdminHome.this, MainActivity.class);
+        startActivity(i);
+        finish();
+
     }
 }

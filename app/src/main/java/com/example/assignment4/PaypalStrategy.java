@@ -10,6 +10,9 @@ public class PaypalStrategy implements PaymentStrategy {
         this.password=pwd;
     }
 
+    public PaypalStrategy(){
+    }
+
     @Override
     public String pay() {
         return "Customer paid using Paypal.";

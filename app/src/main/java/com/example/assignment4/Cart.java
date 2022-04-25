@@ -33,8 +33,13 @@ public class Cart {
     public String getQuantity() {
         return quantity;
     }
-
     public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
+
+    public String pay(PaymentStrategy paymentMethod){
+        return paymentMethod.pay();
+    }
+
+
 }

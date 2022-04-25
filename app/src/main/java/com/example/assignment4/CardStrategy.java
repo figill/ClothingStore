@@ -13,6 +13,10 @@ public class CardStrategy implements PaymentStrategy {
         this.cvv=cvv;
         this.dateOfExpiry=expiryDate;
     }
+
+    public CardStrategy(){
+    }
+
     @Override
     public String pay() {
         return "Customer paid with credit/debit card";

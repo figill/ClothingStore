@@ -44,8 +44,6 @@ public class ProfileAdmin extends AppCompatActivity {
                 Admin admin = documentSnapshot.toObject(Admin.class);
                 t1.setText("   " + admin.getName());
                 t3.setText("   " + admin.getPhone());
-
-
             }
         });
 
@@ -53,7 +51,7 @@ public class ProfileAdmin extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavAdmin);
         Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(1);
+        MenuItem menuItem = menu.getItem(2);
         menuItem.setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){

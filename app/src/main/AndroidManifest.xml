@@ -10,13 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Assignment4">
         <activity
+            android:name=".Reviews"
+            android:exported="true" />
+        <activity
+            android:name=".EditStock"
+            android:exported="true" />
+        <activity
             android:name=".Products"
             android:exported="true" />
         <activity
             android:name=".AddStock"
             android:exported="true" />
         <activity
-            android:name=".CategoryAdmin"
+            android:name=".ProfileAdmin"
             android:exported="true" />
         <activity
             android:name=".StockItems"

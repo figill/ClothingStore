@@ -1,12 +1,16 @@
 package com.example.assignment4;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +18,7 @@ import java.util.List;
 
 public class StockAdapter extends RecyclerView.Adapter<StockAdapter.MyViewHolder> {
 
-
+    public static final String KEY1 = "id";
     List<StockModel> list;
 
     public StockAdapter(List<StockModel> list) {
@@ -26,6 +30,7 @@ public class StockAdapter extends RecyclerView.Adapter<StockAdapter.MyViewHolder
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView txtView, txtView2, txtView3, txtView4, txtView5;
+        public ImageView imageView;
 
         public MyViewHolder(View itemView) {
             super(itemView); //itemView corresponds to all views defined in row layout txt
@@ -34,6 +39,7 @@ public class StockAdapter extends RecyclerView.Adapter<StockAdapter.MyViewHolder
             txtView3 = (TextView) itemView.findViewById(R.id.category);
             txtView4 = (TextView) itemView.findViewById(R.id.price);
             txtView5 = (TextView) itemView.findViewById(R.id.quantity);
+            imageView = (ImageView) itemView.findViewById(R.id.imageView4);
             itemView.setOnClickListener(this);
         }
 
@@ -41,6 +47,8 @@ public class StockAdapter extends RecyclerView.Adapter<StockAdapter.MyViewHolder
         public void onClick(View view) {
             int position = this.getLayoutPosition();
 
+            Intent i = new Intent(view.getContext(), EditStock.class);
+            view.getContext().startActivity(i);
         }
     }
 
@@ -63,6 +71,7 @@ public class StockAdapter extends RecyclerView.Adapter<StockAdapter.MyViewHolder
         viewHolder.txtView3.setText(list.get(position).getCategory());
         viewHolder.txtView4.setText(list.get(position).getPrice());
         viewHolder.txtView5.setText(list.get(position).getQuantity());
+        Picasso.get().load(list.get(position).getImage()).into(viewHolder.imageView);
 
     }
 

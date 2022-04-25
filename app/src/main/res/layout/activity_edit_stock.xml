@@ -3,14 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/lightblue"
     android:layout_height="match_parent"
-    tools:context=".AddStock">
-
+    android:background="@color/lightblue"
+    tools:context=".EditStock">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="387dp"
-        android:layout_height="523dp"
+        android:layout_width="394dp"
+        android:layout_height="532dp"
         android:layout_gravity="center"
         android:layout_margin="5dp"
         app:cardBackgroundColor="@color/white"
@@ -21,7 +20,6 @@
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
@@ -69,7 +67,7 @@
             <TextView
                 android:id="@+id/textView49"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="34dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -106,7 +104,7 @@
             <TextView
                 android:id="@+id/textView89"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="34dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -129,7 +127,6 @@
                     android:text=""
                     android:textSize="20dp"
                     android:textStyle="bold" />
-
                 <EditText
                     android:id="@+id/category"
                     android:layout_width="wrap_content"
@@ -143,7 +140,7 @@
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="34dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -166,7 +163,6 @@
                     android:text=""
                     android:textSize="20dp"
                     android:textStyle="bold" />
-
                 <EditText
                     android:id="@+id/quantity"
                     android:layout_width="wrap_content"
@@ -180,7 +176,7 @@
             <TextView
                 android:id="@+id/textView39"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="34dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -203,7 +199,6 @@
                     android:text=""
                     android:textSize="20dp"
                     android:textStyle="bold" />
-
                 <EditText
                     android:id="@+id/price"
                     android:layout_width="wrap_content"
@@ -214,20 +209,14 @@
 
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="match_parent"
-                android:layout_height="86dp"
-                app:srcCompat="@android:drawable/ic_menu_gallery" />
-
             <Button
-                android:id="@+id/addStock"
-                android:layout_width="199dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/editStock"
+                android:layout_width="221dp"
+                android:layout_height="69dp"
                 android:layout_gravity="center"
                 android:background="@color/transparent"
                 android:drawableEnd="@drawable/ic_baseline_add_circle_24"
-                android:text="Add Item"
+                android:text="Add Edited Item"
                 android:textStyle="bold" />
 
         </LinearLayout>

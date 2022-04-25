@@ -27,7 +27,7 @@ public class CustomerDetails extends AppCompatActivity {
                     startActivity(intent3);
                     break;
 
-                case R.id.navigation_cat:
+                case R.id.navigation_profile:
                     Intent intent = new Intent(CustomerDetails.this, ProfileAdmin.class);
                     startActivity(intent);
                     break;

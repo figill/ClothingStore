@@ -64,6 +64,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         viewHolder.txtView4.setText(list.get(position).getPrice());
         viewHolder.txtView5.setText(list.get(position).getQuantity());
 
+
     }
 
 

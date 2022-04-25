@@ -25,7 +25,7 @@ public class AdminHome extends AppCompatActivity {
                 case R.id.navigation_home:
                     break;
 
-                case R.id.navigation_cat:
+                case R.id.navigation_profile:
                     Intent intent = new Intent(AdminHome.this, ProfileAdmin.class);
                     startActivity(intent);
                     break;

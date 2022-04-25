@@ -1,16 +1,15 @@
 package com.example.assignment4;
 
-import android.net.Uri;
-
 public class StockModel {
+
     String title;
     String manufacturer;
     String category;
     String quantity;
     String price;
-    Uri image;
+    String image;
 
-    public StockModel(String title, String manufacturer, String category, String quantity, String price, Uri image) {
+    public StockModel(String title, String manufacturer, String category, String quantity, String price, String image) {
         this.title = title;
         this.manufacturer = manufacturer;
         this.category = category;
@@ -30,6 +29,7 @@ public class StockModel {
         this.quantity = quantity;
         this.price = price;
     }
+
 
     public String getTitle() {
         return title;
@@ -71,11 +71,11 @@ public class StockModel {
         this.price = price;
     }
 
-    public Uri getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Uri image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

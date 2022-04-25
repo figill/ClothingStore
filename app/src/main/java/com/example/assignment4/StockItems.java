@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -34,6 +35,7 @@ public class StockItems extends AppCompatActivity {
     private List<StockModel> list;
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
+    private DatabaseReference databaseReference;
     private Button button;
     private String selectedFilter = "all";
 
@@ -57,7 +59,7 @@ public class StockItems extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavAdmin);
         Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(2);
+        MenuItem menuItem = menu.getItem(1);
         menuItem.setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
@@ -66,7 +68,7 @@ public class StockItems extends AppCompatActivity {
                     startActivity(intent3);
                     break;
 
-                case R.id.navigation_cat:
+                case R.id.navigation_profile:
                     Intent intent = new Intent(StockItems.this, ProfileAdmin.class);
                     startActivity(intent);
                     break;

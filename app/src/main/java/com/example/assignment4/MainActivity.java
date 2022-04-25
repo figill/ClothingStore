@@ -17,13 +17,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity<email, password> extends AppCompatActivity {
+public class MainActivity<email, password> extends AppCompatActivity implements ILoginView {
     public static final String key1 = "USER_ID";
 
     private EditText useremailedittext;
     private EditText passwordedittext;
     private Button signUpbutton, signInbutton, adminButton;
     private FirebaseAuth mAuth;
+    ILoginController loginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,5 +100,14 @@ public class MainActivity<email, password> extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void OnLoginSuccess(String message) {
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void OnLoginError(String message) {
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 }

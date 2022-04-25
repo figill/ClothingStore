@@ -13,9 +13,6 @@
             android:name=".ConfirmedPurchase"
             android:exported="true" />
         <activity
-            android:name=".Reviews"
-            android:exported="true" />
-        <activity
             android:name=".EditStock"
             android:exported="true" />
         <activity

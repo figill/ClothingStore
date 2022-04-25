@@ -1,9 +1,13 @@
 package com.example.assignment4;
 
+import android.text.TextUtils;
+import android.util.Patterns;
+
 import java.util.Date;
 
-public class User {
+public class User implements IUser {
 
+    private String email, password;
     String name;
     String address;
     String cardNumber;
@@ -16,12 +20,17 @@ public class User {
     }
 
     public User(String name, String address, String cardNumber, String cardExpiry,
-            String cvs) {
+                String cvs) {
         this.name = name;
         this.address = address;
         this.cardNumber = cardNumber;
         this.cardExpiry = cardExpiry;
         this.cvs = cvs;
+    }
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public String getName() {
@@ -62,5 +71,29 @@ public class User {
 
     public void setCvs(String cvs) {
         this.cvs = cvs;
+    }
+
+    @Override
+    public String getEmail() {
+        return email;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public int isValid() {
+        if (TextUtils.isEmpty(getEmail()))
+            return 0;
+        else if (!Patterns.EMAIL_ADDRESS.matcher(getEmail()).matches())
+            return 1;
+        else if (TextUtils.isEmpty(getPassword()))
+            return 2;
+        else if (getPassword().length() <= 6)
+            return 3;
+        else
+            return -1;
     }
 }

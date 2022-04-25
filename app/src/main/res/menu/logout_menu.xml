@@ -6,7 +6,6 @@
         android:id="@+id/action_Logout"
         android:orderInCategory="90"
         android:title="Logout"
-        android:onClick="logOut"
         app:showAsAction="always"
         android:icon="@drawable/ic_baseline_logout_24" />
 

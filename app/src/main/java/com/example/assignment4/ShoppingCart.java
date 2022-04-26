@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,6 +30,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import java.util.Date;
@@ -47,6 +50,9 @@ public class ShoppingCart extends AppCompatActivity {
     Cart cart = new Cart();
     public static final String TAG = "TAG";
 
+    private static HashMap<Cart.OnStateChangeListener, View> viewListeners = new LinkedHashMap<>();
+    private static HashMap<ShoppingCart, ArrayList<Cart.OnStateChangeListener>> productListeners = new LinkedHashMap<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +69,7 @@ public class ShoppingCart extends AppCompatActivity {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setHasFixedSize(true);
-
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         adapter = new CartAdapter(list);
         recyclerView.setAdapter(adapter);
 
@@ -165,6 +171,17 @@ public class ShoppingCart extends AppCompatActivity {
             }
         });
 
+        //Get all the listeners for this specific product
+        ArrayList<Cart.OnStateChangeListener> x = productListeners.get(minteger);
+        //For each listener
+        for(Cart.OnStateChangeListener listener : x) {
+
+            //Get the view that owns this listener
+            View v = viewListeners.get(listener);
+
+            //Trigger update on the subscribed view
+            listener.onStateChange(v);
+        }
     }
 
     @Override
@@ -243,20 +260,35 @@ public class ShoppingCart extends AppCompatActivity {
 
     public void increaseInteger(View view) {
         minteger = minteger + 1;
-        display(minteger);
+       // display(minteger);
 
+        //productView gets updated here
+        Cart.OnStateChangeListener mCartListener = new Cart.OnStateChangeListener() {
+            @Override
+            public void onStateChange(View productView) {
+                TextView displayInteger = (TextView) findViewById(
+                        R.id.integer_number);
+                displayInteger.setText("" + minteger);
+            }
+
+        };
     }
 
     public void decreaseInteger(View view) {
         minteger = minteger - 1;
-        display(minteger);
+
+        //productView gets updated here
+        Cart.OnStateChangeListener mCartListener = new Cart.OnStateChangeListener() {
+            @Override
+            public void onStateChange(View productView) {
+                TextView displayInteger = (TextView) findViewById(
+                        R.id.integer_number);
+                displayInteger.setText("" + minteger);
+            }
+
+        };
     }
 
-    private void display(int number) {
-        TextView displayInteger = (TextView) findViewById(
-                R.id.integer_number);
-        displayInteger.setText("" + number);
-    }
 
     public void pay(View view) {
     }

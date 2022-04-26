@@ -1,7 +1,13 @@
 package com.example.assignment4;
 
-public class Cart {
+import android.view.View;
 
+import java.net.CookieHandler;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+
+public class Cart {
     String title;
     String price;
     String quantity;
@@ -41,5 +47,8 @@ public class Cart {
         return paymentMethod.pay();
     }
 
+    public interface OnStateChangeListener {
+        void onStateChange(View v);
+    }
 
 }

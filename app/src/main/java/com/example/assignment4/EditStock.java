@@ -1,8 +1,5 @@
 package com.example.assignment4;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -16,22 +13,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
-import java.util.UUID;
 
 public class EditStock extends AppCompatActivity {
 
@@ -39,9 +32,7 @@ public class EditStock extends AppCompatActivity {
     Button button;
     public static final String TAG = "TAG";
     private ImageView productPic;
-    StockModel stockModel;
     public Uri imageUri;
-    public String imageURL;
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
 
@@ -55,11 +46,15 @@ public class EditStock extends AppCompatActivity {
         t3 = findViewById(R.id.category);
         t4 = findViewById(R.id.quantity);
         t5 = findViewById(R.id.price);
+        productPic = findViewById(R.id.imageView5);
         button = findViewById(R.id.editStock);
 
-//        Intent i = getIntent();
-//        String id = i.getStringExtra(StockAdapter.KEY1);
-        //String docID = stockModel.getId();
+        productPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                choosePicture();
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,9 +119,6 @@ public class EditStock extends AppCompatActivity {
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Uploading Image...");
         pd.show();
-
-        final String randomKey = UUID.randomUUID().toString();
-
 
         StorageReference storageReference1 = storageReference.child("StockImages/" + getFileExtension(imageUri));
         storageReference1.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

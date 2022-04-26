@@ -72,8 +72,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         viewHolder.txtView.setText(list.get(position).getTitle());
         viewHolder.txtView2.setText(list.get(position).getPrice());
 
-       // int productPrice = (Integer.valueOf(list.get(position).getPrice())) * (Integer.valueOf(list.get(position).getQuantity()));
-       // totalPrice = totalPrice + productPrice;
+        int productPrice = (Integer.valueOf(list.get(position).getPrice())) * (Integer.valueOf(list.get(position).getQuantity()));
+        totalPrice = totalPrice + productPrice;
 
     }
 

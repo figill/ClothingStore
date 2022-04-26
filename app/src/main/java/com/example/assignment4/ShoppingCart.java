@@ -59,9 +59,9 @@ public class ShoppingCart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
-        //totalPrice = getIntent().getStringExtra("Total Price");
+        totalPrice = getIntent().getStringExtra("Total Price");
         t1 = findViewById(R.id.textView3);
-        t1.setText("2000.49");
+
 
         list = new ArrayList<>();
         recyclerView = findViewById(R.id.my_recycler_view);
@@ -116,7 +116,7 @@ public class ShoppingCart extends AppCompatActivity {
                 String userID = user.getUid();
                 String paymentType = cart.pay(new CardStrategy());
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-                OrderReceipt orderReceipt = new OrderReceipt(userID, email, paymentType, "2000.49", new Date().toString());
+                OrderReceipt orderReceipt = new OrderReceipt(userID, email, paymentType, totalPrice, new Date().toString());
 
                 db.collection("OrderReceipt").document()
                         .set(orderReceipt)
@@ -148,7 +148,7 @@ public class ShoppingCart extends AppCompatActivity {
                 String userID = user.getUid();
                 String paymentType = cart.pay(new PaypalStrategy());
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-                OrderReceipt orderReceipt = new OrderReceipt(userID, email, paymentType, "2000.49", new Date().toString());
+                OrderReceipt orderReceipt = new OrderReceipt(userID, email, paymentType, totalPrice, new Date().toString());
 
                 db.collection("OrderReceipt").document()
                         .set(orderReceipt)
@@ -174,7 +174,7 @@ public class ShoppingCart extends AppCompatActivity {
         //Get all the listeners for this specific product
         ArrayList<Cart.OnStateChangeListener> x = productListeners.get(minteger);
         //For each listener
-        for(Cart.OnStateChangeListener listener : x) {
+        for (Cart.OnStateChangeListener listener : x) {
 
             //Get the view that owns this listener
             View v = viewListeners.get(listener);
@@ -260,8 +260,7 @@ public class ShoppingCart extends AppCompatActivity {
 
     public void increaseInteger(View view) {
         minteger = minteger + 1;
-       // display(minteger);
-
+        //display(minteger);
         //productView gets updated here
         Cart.OnStateChangeListener mCartListener = new Cart.OnStateChangeListener() {
             @Override
@@ -276,7 +275,7 @@ public class ShoppingCart extends AppCompatActivity {
 
     public void decreaseInteger(View view) {
         minteger = minteger - 1;
-
+        //display(minteger);
         //productView gets updated here
         Cart.OnStateChangeListener mCartListener = new Cart.OnStateChangeListener() {
             @Override
@@ -289,6 +288,11 @@ public class ShoppingCart extends AppCompatActivity {
         };
     }
 
+    private void display(int number) {
+        TextView displayInteger = (TextView) findViewById(
+                R.id.integer_number);
+        displayInteger.setText("" + number);
+    }
 
     public void pay(View view) {
     }
